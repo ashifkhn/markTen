@@ -1,3 +1,6 @@
+body{
+    background-color: cadetblue;
+}
 h1{
     text-align: center;
 }
@@ -9,3 +12,12 @@ p{
     flex-direction: column;
     width: 50vw;    
 }
+ .bill{
+     text-align: center;
+     padding:1rem;
+ }
+
+ .btn{
+     text-align: center;
+     padding: 1rem;
+ }

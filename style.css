@@ -19,7 +19,9 @@ p{
 
  .btn{
      text-align: center;
-     padding: 1rem;
+     border-radius: 1rem;
+     font-size: large;
+  cursor: pointer;
  }
  .change-table {
     width: 50%;
@@ -40,4 +42,11 @@ td {
   width: 0%;
   border-collapse: collapse;
   padding: 0.4rem;
+}
+#check-button{
+  text-align: center;
+  border-radius: 0.4rem;
+  font-size: large;
+cursor: pointer;
+border: none;
 }

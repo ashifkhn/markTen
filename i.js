@@ -1,42 +1,41 @@
-const billAmount=document.querySelector("bill-amount")
-const cashGiven=document.querySelector("#cash-given")
-const checkBtn=document.querySelector("check-btn")
-const errorMsg=document.querySelector("error-msg")
-const numberOfNotes=document.querySelector(".no-of-notes")
+const billAmount = document.querySelector("#bill-amount");
+const cashGiven = document.querySelector("#cash-given");
+const checkButton = document.querySelector("#check-button");
+const errorMessage = document.querySelector("#error-message");
+const noOfNotes = document.querySelectorAll(".no-of-notes");
 
+const availableNotes = [2000, 500, 100, 20, 10, 5, 1];
 
-const notesAvailable=[2000,500,200,100,50,20,10,5,1]
+checkButton.addEventListener("click", function BillAndCashAmount() {
+  hideMessage();
+  if (Number(billAmount.value) <= 0 || Number(cashGiven.value) <= 0) {
+    showErrorMessage("Invalid Amount Entered");
+  } else if (Number(cashGiven.value) >= Number(billAmount.value)) {
+    const amountToBeReturned =
+      Number(cashGiven.value) - Number(billAmount.value);
 
-checkBtn.addEventListener("click", function billAndCash(){
-    hideMsg();
-    if (Number(billAmount.value)<0 ||Number(cashGiven.value)<0){
-        showMessage("Invalid Amount")
-    }
-    else if(Number(cashGiven.value)>=(Number(billAmount.value)){
-        const returnAmount =cashGiven.value-billAmount.value;
-        showMessage (returnAmount)
-        calculateAmount(toBeReturned)
-    }
-    else{
-        showMessage("Cash given is less then bill amount")
-    }
-})
+    showErrorMessage(amountToBeReturned);
+    calculateChange(amountToBeReturned);
+  } else {
+    showErrorMessage("Error!");
+  }
+});
 
-function calculateAmount(toBeReturned){
-    for(var i=0;i<notesAvailable.length;i++){
-        const noOfNotes=Math.trunc(returnAmount/notesAvailable[i])
-        toBeReturn=toBeReturn%notesAvailable[i]
-        noOfNotes[i].innerText=noOfNotes;
-    }
+function calculateChange(amountToBeReturned) {
+  for (let i = 0; i < availableNotes.length; i++) {
+    const numberOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]);
+
+    amountToBeReturned = amountToBeReturned % availableNotes[i];
+
+    noOfNotes[i].innerText = numberOfNotes;
+  }
 }
 
-
-
-function showMessage(message){
-    errorMsg.style.display="block"
-    errorMsg.innerText=message;
+function hideMessage() {
+  errorMessage.style.display = "none";
 }
 
-function hideMsg(){
-    errorMsg.style.display="none"
+function showErrorMessage(msg) {
+  errorMessage.style.display = "block";
+  errorMessage.innerText = msg;
 }
